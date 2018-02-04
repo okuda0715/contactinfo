@@ -10,12 +10,12 @@ module.exports = {
         address: req.body.address,
         city: req.body.city,
         state: req.body.state,
-        zidCode: req.body.zipCode,
+        zipCode: req.body.zipCode,
         country: req.body.country,
         email: req.body.email,
       })
       .then(contactinfo => res.status(200).send(contactinfo))
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(404).send(error));
   },
   list(req, res) {
     return ContactInfo

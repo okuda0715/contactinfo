@@ -1,24 +1,24 @@
 {
   "development": {
-    "username": "austin",
-    "password": null,
-    "database": "contact-info",
+    "username": "okuda",
+    "password": "starwars",
+    "database": "okuda",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "austin",
-    "password": null,
-    "database": "contact-info",
+    "username": "okuda",
+    "password": "starwars",
+    "database": "okuda",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "production": {
-    "username": "austin",
-    "password": null,
-    "database": "contact-info",
+    "username": "okuda",
+    "password": "starwars",
+    "database": "okuda",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
