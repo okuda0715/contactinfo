@@ -15,7 +15,7 @@ module.exports = {
         email: req.body.email,
       })
       .then(contactinfo => res.status(200).send(contactinfo))
-      .catch(error => res.status(404).send(error));
+      .catch(error => res.status(400).send(error));
   },
   list(req, res) {
     return ContactInfo

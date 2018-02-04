@@ -8,4 +8,5 @@ module.exports = (app) => {
   app.post('/api/contactinfos', contactInfoController.create);
   app.get('/api/contactinfos', contactInfoController.list);
   app.get('/api/contactinfos/:id', contactInfoController.retrieve);
+
 };
