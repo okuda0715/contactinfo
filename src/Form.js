@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
       firstName: '',
-      middleI: '',
       lastName: '',
       address: '',
       city: '',
       state: '',
+      zipCode: 0,
       country: '',
       email: '',
-      phoneNumber: ''
     };
 
-    //this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,13 +23,27 @@ class Form extends Component {
   //   this.setState({firstName: event.target.firstName});
   // }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addInfo(this.refs.firstNameInput.value, this.props._id);
-    this.refs.firstNameInput.value = '';
+    const { firstName, lastName, address, city, state, zipCode, country, email } = this.state;
+
+    axios.post('/api/contactinfos', { firstName, lastName, address, city, state, zipCode, country, email })
+      .then((result) => {
+        alert('thanks for submitting');
+        return result;
+      }).catch(err => err);
+    // this.props.addInfo(this.refs.firstNameInput.value, this.props._id);
+    // this.refs.firstNameInput.value = '';
+  }
+
+  onChange = (event) => {
+    const state = this.state;
+    state[event.target.name] = event.target.value;
+    this.setState(state);
   }
 
   render() {
+    const { firstName, lastName, address, city, state, zipCode, country, email } = this.state;
     return (
       <div className="panel panel-info">
         <div className="panel-heading">
@@ -43,64 +57,88 @@ class Form extends Component {
                 <input
                   type="text"
                   placeholder="First Name"
-                  ref="firstNameInput"
-                  className="form-control" />
+                  name="firstName"
+                  value={firstName}
+                  //ref="firstNameInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>Last Name</span>
                 <input
                   type="text"
                   placeholder="Last Name"
-                  ref="lastNameInput"
-                  className="form-control" />
+                  name="lastName"
+                  value={lastName}
+                  //ref="lastNameInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>Address</span>
                 <input
                   type="text"
                   placeholder="Address"
-                  ref="addressInput"
-                  className="form-control" />
+                  name="address"
+                  value={address}
+                  //ref="addressInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>City</span>
                 <input
                   type="text"
                   placeholder="City"
-                  ref="cityInput"
-                  className="form-control" />
+                  name="city"
+                  value={city}
+                  //ref="cityInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>State</span>
                 <input
                   type="text"
                   placeholder="State"
-                  ref="stateInput"
-                  className="form-control" />
+                  name="state"
+                  value={state}
+                  //ref="stateInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>Zip Code</span>
                 <input
                   type="text"
                   placeholder="Zip Code"
-                  ref="zipCodeInput"
-                  className="form-control" />
+                  name="zipCode"
+                  value={zipCode}
+                  //ref="zipCodeInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>Country</span>
                 <input
                   type="text"
                   placeholder="Country"
-                  ref="countryInput"
-                  className="form-control" />
+                  name="country"
+                  value={country}
+                  //ref="countryInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
               <label>
                 <span>Email</span>
                 <input
                   type="text"
                   placeholder="Email"
-                  ref="emailInput"
-                  className="form-control" />
+                  name="email"
+                  value={email}
+                  //ref="emailInput"
+                  className="form-control"
+                  onChange={this.onChange} />
               </label>
                 <span className="input-group-btn">
                 <button type="submit" className="btn btn-info">
@@ -114,7 +152,5 @@ class Form extends Component {
     );
   }
 }
-
-
 
 export default Form;
