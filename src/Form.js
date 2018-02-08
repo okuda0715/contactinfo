@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -24,16 +25,22 @@ class Form extends Component {
   // }
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    const { firstName, lastName, address, city, state, zipCode, country, email } = this.state;
-
-    axios.post('/api/contactinfos', { firstName, lastName, address, city, state, zipCode, country, email })
-      .then((result) => {
-        alert('thanks for submitting');
-        return result;
-      }).catch(err => err);
-    // this.props.addInfo(this.refs.firstNameInput.value, this.props._id);
-    // this.refs.firstNameInput.value = '';
+    axios.post('http://localhost:8000/api/contactinfos', {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      address: this.state.address,
+      city: this.state.city,
+      state: this.state.state,
+      zipCode: this.state.zipCode,
+      country: this.state.country,
+      email: this.state.email
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   onChange = (event) => {
@@ -59,7 +66,7 @@ class Form extends Component {
                   placeholder="First Name"
                   name="firstName"
                   value={firstName}
-                  //ref="firstNameInput"
+                  ref="firstNameInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -70,7 +77,7 @@ class Form extends Component {
                   placeholder="Last Name"
                   name="lastName"
                   value={lastName}
-                  //ref="lastNameInput"
+                  ref="lastNameInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -81,7 +88,7 @@ class Form extends Component {
                   placeholder="Address"
                   name="address"
                   value={address}
-                  //ref="addressInput"
+                  ref="addressInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -92,7 +99,7 @@ class Form extends Component {
                   placeholder="City"
                   name="city"
                   value={city}
-                  //ref="cityInput"
+                  ref="cityInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -103,7 +110,7 @@ class Form extends Component {
                   placeholder="State"
                   name="state"
                   value={state}
-                  //ref="stateInput"
+                  ref="stateInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -114,7 +121,7 @@ class Form extends Component {
                   placeholder="Zip Code"
                   name="zipCode"
                   value={zipCode}
-                  //ref="zipCodeInput"
+                  ref="zipCodeInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -125,7 +132,7 @@ class Form extends Component {
                   placeholder="Country"
                   name="country"
                   value={country}
-                  //ref="countryInput"
+                  ref="countryInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
@@ -136,7 +143,7 @@ class Form extends Component {
                   placeholder="Email"
                   name="email"
                   value={email}
-                  //ref="emailInput"
+                  ref="emailInput"
                   className="form-control"
                   onChange={this.onChange} />
               </label>
