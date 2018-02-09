@@ -11,7 +11,7 @@ class Form extends Component {
       address: '',
       city: '',
       state: '',
-      zipCode: 0,
+      zipCode: '',
       country: '',
       email: '',
     };
@@ -20,11 +20,8 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleChange(event) {
-  //   this.setState({firstName: event.target.firstName});
-  // }
-
   handleSubmit = (event) => {
+    alert("Thanks for the submission!");
     axios.post('http://localhost:8000/api/contactinfos', {
       firstName: this.state.firstName,
       lastName: this.state.lastName,

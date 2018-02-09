@@ -4,13 +4,13 @@ module.exports = {
   create(req, res) {
     return ContactInfo
       .create({
-        id: req.body.id,
+        id: Math.floor((1 + Math.random()) * 0x1000000),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         address: req.body.address,
         city: req.body.city,
         state: req.body.state,
-        zipCode: req.body.zipCode,
+        zipCode: Number(req.body.zipCode),
         country: req.body.country,
         email: req.body.email,
       })
